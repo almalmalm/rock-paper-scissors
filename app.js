@@ -16,9 +16,6 @@ function computerPlay () {
     return computerChoice;
 };
 
-//let playerSelection = prompt(`Enter 'rock', 'paper' or 'scissors'`).toLowerCase();
-
-
 function playRound(playerSelection, computerSelection) {
     let result;
 
@@ -41,7 +38,31 @@ function playRound(playerSelection, computerSelection) {
     return (result == 'Draw') ? `It's a draw!` : result;
   }
   
-const playerSelection = prompt(`Enter 'rock', 'paper' or 'scissors':`).toLocaleLowerCase();
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+let playerSelection;
+let computerSelection;
 
+function game () {
+    let winner;
+    let score;
+    let playerCounter = 0;
+    let computerCounter = 0;
+
+    const statusWin = 'Win';
+    const statusLose = 'Lose';
+
+    for (let i = 0; i < 5; i++) {
+       
+        playerSelection = prompt(`Enter 'rock', 'paper' or 'scissors':`).toLocaleLowerCase();
+        computerSelection = computerPlay();
+        let status = playRound(playerSelection, computerSelection);
+       
+        if (status.includes(statusWin)) {
+            playerCounter += 1;
+        } else if (status.includes(statusLose)) {
+            computerCounter += 1;
+        }
+    }
+
+    return score = `Player: ${playerCounter} - Computer: ${computerCounter}`;
+}
+alert(game());
