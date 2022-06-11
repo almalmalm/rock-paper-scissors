@@ -3,16 +3,45 @@ function computerPlay () {
     
     switch (computerChoice) { 
         case 0 :
-            computerChoice = 'Rock';
+            computerChoice = 'rock';
             break;
         case 1 :
-            computerChoice = 'Paper';
+            computerChoice = 'paper';
             break;
         case 2 :
-            computerChoice = 'Scissors';
+            computerChoice = 'scissors';
             break;
     }
 
     return computerChoice;
-}
+};
+
+//let playerSelection = prompt(`Enter 'rock', 'paper' or 'scissors'`).toLowerCase();
+
+
+function playRound(playerSelection, computerSelection) {
+    let result;
+
+    if (playerSelection == 'rock' && computerSelection == 'paper') {
+        result =  `You Lose ! Paper beats Rock.`
+    } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+        result =  `You Win ! Rock beats Scissors.`
+    } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+        result =  `You Win ! Paper beats Rock.`
+    } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+        result =  `You Lose ! Scissors beats Paper.`
+    } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+        result =  `You Lose ! Rock beats Scissors.`
+    } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+        result =  `You Win ! Scissors beats Paper.`
+    } else {
+        result = 'Draw';
+    }
+
+    return (result == 'Draw') ? `It's a draw!` : result;
+  }
+  
+const playerSelection = prompt(`Enter 'rock', 'paper' or 'scissors':`).toLocaleLowerCase();
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
 
